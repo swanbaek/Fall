@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+<title>Memo List</title>
+</head>
+<body>
+<div align="center"  id="memoTab" class="container"> 
+
+<!-- ----------------------------------------- -->
+	<div class="navbar navbar-default navbar-static-top">
+              <div class="container">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#"><span>Brand</span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                      <a href="#">Home</a>
+                    </li>
+                    <li>
+                      <a href="#">Contacts</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+	<!-- ------------------------------------  -->
+   
+	<div class="row">
+		<div class="col-md-12">
+		<h1>::Node's 한줄 메모장::</h1>
+		</div>	
+	</div>    
+	
+		<br><br>
+	<table   style="width:90%" 
+	class="table table-striped table-hover">
+		<tr class="info">
+			<th>글번호</th>
+			<th style="width:50%">메모내용</th>
+			<th>작성자</th>
+			<th>작성일</th>
+			<th>삭제</th>
+			<th>수정</th>
+		</tr>
+<% memoList.forEach(function(memo, index){ %>		
+		<tr>
+			<td><%=memo.idx%></td>
+			<td><%=memo.msg%></td>
+			<td><%=memo.name%></td>
+			<td><%=memo.wdate%></td>
+			<td><a href="/delete/<%=memo.idx%>"><i class="fa fa-2x fa-fw fa-trash-o"></i></a></td>
+			<td><a href="/edit/<%=memo.idx%>"><i class="fa fa-2x fa-edit fa-fw"></i></a>
+		</tr>
+<%});%>
+	<tr>
+		<td colspan="3"><b>현재  <span class="text-danger"><%=cp%></span></b>  /<b><%=pageCnt%></b> </td>
+		<td colspan="3"><h5><b>총게시글 수</b> <span class="label label-warning"><%=total%></span></h5> </td>
+	</tr>		
+	</table>
+	
+	<div class="row text-center">
+	<div>
+	<ul class="pagination">
+              <li>
+                <a href="#">Prev</a>
+              </li>
+              <%  
+              	for(var i=1;i<=pageCnt;i++){
+              		var str="";
+              		if(cp==i){
+              		   str="active";
+              		}
+              %>
+              <li class="<%=str%>">
+                <a href="/memos/<%=i%>#"><%=i%></a>
+                
+              </li>
+              <% } %>
+              <li>
+                <a href="#">Next</a>
+              </li>
+            </ul>
+	</div>            
+	</div>
+	
+	
+	<div class="section">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-xs-2 col-xs-offset-2 text-center">
+            <a href="/memos"><i class="fa fa-3x fa-align-justify fa-fw"></i></a>
+          </div>
+          <div class="col-xs-2">
+            <a href="/"><i class="-square fa fa-3x fa-fw fa-pencil"></i></a>
+          </div>
+          <div class="col-xs-2">
+            <a><i class="fa fa-3x fa-facebook fa-fw"></i></a>
+          </div>
+          <div class="col-xs-2 text-center">
+            <a><i class="fa fa-3x fa-fw fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      
+	</div>
+</div>		
+</body>
+</html>
