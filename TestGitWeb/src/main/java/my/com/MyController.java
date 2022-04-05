@@ -8,7 +8,7 @@ public class MyController {
 
 	@RequestMapping("/testGit")
 	public String testGit(){
-		return "hello";
+		return "hello bye";
 	}
 	
 }
