@@ -10,5 +10,5 @@ public class MyController {
 	public String testGit(){
 		return "hello bye";
 	}
-	
+	//git 테스트 합니다.
 }
